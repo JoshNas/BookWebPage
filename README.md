@@ -1,2 +1,3 @@
-# BookWebPage
-Project 1 for cs50 web dev
+# Project 1
+
+Web Programming with Python and JavaScript

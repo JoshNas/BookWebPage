@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Create your account
+{% endblock %}
+
+{% block body %}
+    <form action="{{url_for('create')}}" method="post">
+      <div>Email:
+        <input type="email" name="email" placeholder="Email" value="{{
+          request.form.email }}">
+      </div>
+        <div>Username:
+          <input type="text" name="username" placeholder="Username" value="{{
+            request.form.username }}">
+        </div>
+        <div>Password:
+        <input type="password" name="password" placeholder="Password" value="{{
+          request.form.password }}">
+        </div>
+        <button>Create</button>
+    </form>
+    {% if error %}
+      <p class="error"><strong>Error:</strong> {{ error }}
+    {% endif %}
+{% endblock %}

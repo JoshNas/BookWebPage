@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+See information about your book and submit a review
+
+
+{% endblock %}
+
+{% block body %}
+<div>
+    <p>{{ title }} &emsp;&emsp; rating:  {{ rating }} &emsp;&emsp;&emsp;&emsp; isbn: {{ isbn }}</p>
+    <p>by: {{ author }} &emsp;&emsp; in: {{ year }}</p>
+
+</div>
+<div>
+    <p>Reviews:</p>
+    {% for review in reviews %}
+
+    <p>{{ review[1] }} stars</p>
+    <p>{{ review[0] }}</p>
+    <p>--------------------------------------------</p>
+
+    {% endfor %}
+
+</div>
+
+
+
+
+<div>
+    <div class="rating">
+        <input type="radio" name="star" id="star1"><label for="star1"></label>
+        <input type="radio" name="star" id="star2"><label for="star2"></label>
+        <input type="radio" name="star" id="star3"><label for="star3"></label>
+        <input type="radio" name="star" id="star4"><label for="star4"></label>
+        <input type="radio" name="star" id="star5"><label for="star5"></label>
+    </div>
+    <p>Leave a review</p>
+
+    <form action="{{url_for('submit')}}" method="post" >
+        <textarea rows="25" cols="100" name="review"></textarea>
+        <button>Submit</button>
+    </form>
+</div>
+
+
+
+
+{% endblock %}

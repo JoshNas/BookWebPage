@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+Welcome {{ name }}! Enter title, author, or ISBN to see information about your book!
+{% endblock %}
+
+<script>
+
+
+</script>
+
+{% block body %}
+<form action="{{url_for('search')}}" method="post">
+  <div>Title:
+    <input type="text" name="title"  value="{{
+      request.form.title }}">
+  </div>
+  <div>Author:
+    <input type="text" name="author" value="{{ request.form.author }}">
+  </div>
+  <div>ISBN:
+    <input type="text" name="isbn" value="{{ request.form.isbn }}">
+  </div>
+  <button>Search</button>
+</form>
+
+
+
+<div>
+
+
+
+  {% for book in session["books"] %}
+
+    <form action="{{  url_for('books_page', title=book.title, author=book.author)  }}" method="post" >
+      {{ book.title }}  'by:' {{ book.author }}  rating:' {{ book.rating }}
+      <button>Select</button>
+    </form>
+
+
+
+
+
+  {% endfor %}
+
+</div>
+
+
+
+<a href="{{url_for('logout')}}">Log Out?</a>
+
+
+{% endblock %}
